@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Category } from '../Category';
 
 import { List, Item } from './styles'
 
-// api 
-import db from '../../../api/db.json'
-
 export const ListOfCategories = () => {
-  const categories = db.categories
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    window.fetch('https://react-avanzado-petgram-jyunakaike.vercel.app/categories')
+    .then(res => res.json())
+    .then(response=> {
+      setCategories(response)
+    })
+  }, [])
+
 
   return (
     <List>
@@ -15,7 +21,5 @@ export const ListOfCategories = () => {
         categories.map(category => <Item key={category.id}><Category {...category} /></Item>)
       }
     </List>
-
-
   )
 }
