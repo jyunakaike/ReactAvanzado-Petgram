@@ -15,6 +15,10 @@ p{
   font-size: 1.6rem;
 }
 
+li{
+  list-style:none;
+}
+
 button{
   background-color: transparent;
   border: 0;
