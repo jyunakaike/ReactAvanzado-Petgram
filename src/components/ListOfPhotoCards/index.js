@@ -7,7 +7,7 @@ export const ListOfPhotoCards = () => {
   return (
     <React.Fragment>
       {
-        array.map(card => <PhotoCard key={card}></PhotoCard>)
+        array.map(card => <PhotoCard key={card} id={card}></PhotoCard>)
       }
     </React.Fragment>
 
