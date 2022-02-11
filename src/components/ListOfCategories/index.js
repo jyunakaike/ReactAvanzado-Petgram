@@ -16,22 +16,30 @@ export const ListOfCategories = () => {
   }, [])
 
   useEffect(() => {
-    const onScroll = (e)=> {
-      const newShowFixed = window.scrollY > 200 
+    const onScroll = (e) => {
+      const newShowFixed = window.scrollY > 200
       showFixed !== newShowFixed && setShowFixed(newShowFixed)
     }
 
-    document.addEventListener('scroll',onScroll)
+    document.addEventListener('scroll', onScroll)
 
     return () => document.removeEventListener('scroll', onScroll)
-  },[showFixed])
+  }, [showFixed])
 
   const renderList = (fixed) => (
-    <List className={(fixed) ? 'fixed' : ''} >
+    <List fixed={fixed} >
       {
         categories.map(category => <Item key={category.id}><Category {...category} /></Item>)
       }
     </List>
+
+
+
+    // <List className={(fixed) ? 'fixed' : ''} >
+    //   {
+    //     categories.map(category => <Item key={category.id}><Category {...category} /></Item>)
+    //   }
+    // </List>
   )
 
 
