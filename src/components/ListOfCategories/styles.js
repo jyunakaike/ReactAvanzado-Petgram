@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { fadeIn } from '../../styles/animation';
 
 export const List = styled.ul`
   display:flex;
@@ -8,6 +9,7 @@ export const List = styled.ul`
     display: none;
    }
   &.fixed{
+    ${fadeIn()}
     background: #fff;
     border-radius: 60px;
     box-shadow: 0 0 20px rgba(0,0,0,0.3);
