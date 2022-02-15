@@ -1,8 +1,14 @@
 import React from 'react';
-import { Article, ImgWrapper, Img, Button } from './styles';
+import { Article, ImgWrapper, Img } from './styles';
+
+// components
+import { FavButton } from '../FavButton';
+// import { ToggleLikeMutation } from '../../container/ToggleLikeMutation';
+import { ToggleLikeMutation } from '../../container/ToggleLikeMutation';
 
 // react- icon 
-import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
+// import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
+
 // hooks
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { useNearScreen } from '../../hooks/useNearScreen';
@@ -12,10 +18,23 @@ const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1518791841217-8f162f1e1
 export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
   const key = `like-${id}`
   const [liked, setLiked] = useLocalStorage(key, false);
-  const [show,element] = useNearScreen();
+  const [show, element] = useNearScreen();
+
+  // const handleFavClick = () => setLiked(!liked)
 
 
-  const Icon = liked ? MdFavorite : MdFavoriteBorder
+  const toggleLike = ToggleLikeMutation()
+  const handleFavButtonClick = () => {
+    !liked && toggleLike(
+      { variables: 
+        { input: 
+          { id: id }
+        }
+      }
+    )
+    setLiked(!liked)
+  }
+
   return (
     <Article ref={element} >
       {
@@ -26,10 +45,30 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
               <Img src={src} />
             </ImgWrapper>
           </a>
+          <FavButton liked={liked} likes={likes} onClick={handleFavButtonClick} />
 
-          <Button onClick={() => setLiked(!liked)}>
-            <Icon size='32px' /> {likes} likes!
-          </Button>
+
+          {/* <ToggleLikeMutation>
+            { //anonymfunction 
+              (toggleLike) => {
+                const handleFavClick = () => {
+                  !liked && toggleLike({
+                    variables: {
+                      input: { id }
+                    }
+                  })
+                  setLiked(!liked)
+                }
+                return <FavButton liked={liked} likes={likes} onClick={handleFavClick} />
+              }
+            }
+          </ToggleLikeMutation> */}
+
+
+
+
+
+
         </React.Fragment>
       }
     </Article>
