@@ -8,7 +8,9 @@ export const ListOfPhotoCardsContainer = ({ categoryId }) => {
   const { loading, error, data } = useQuery(withPhotos, { variables: { categoryId } })
 
   if (error) {
-    return <h2> Internal Server Error</h2>
+
+    console.log(error)
+    return <h2> Internal Server Error</h2> 
   }
 
   if (loading) {

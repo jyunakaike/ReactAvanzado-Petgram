@@ -1,17 +1,21 @@
 import React from 'react'
-import { ListOfCategories } from './components/ListOfCategories'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { GlobalStyle } from './styles/GlobalStyles'
-import { ListOfPhotoCardsContainer } from './container/ListOfPhotoCardsContainer'
 import { PhotoCardWithQuery } from './container/PhotoCardWithQuery'
 
-
+// pages
+import { Home } from './pages/Home'
 
 import { Logo } from './components/Logo'
 
 export const App = () => {
   const urlParams = new window.URLSearchParams(window.location.search)
+
   const detailId = urlParams.get('detail')
-  console.log(detailId);
+  console.log('detailId', detailId);
+
+  const categoryId = urlParams.get('pet')
+  console.log('categoryid', categoryId)
 
   return (
     <React.Fragment>
@@ -19,12 +23,14 @@ export const App = () => {
       <Logo />
       {
         (detailId)
-          ? <PhotoCardWithQuery id= {detailId} />
-          : 
-          <React.Fragment>
-            <ListOfCategories />
-            <ListOfPhotoCardsContainer categoryId={1} /> 
-          </React.Fragment>
+          ? <PhotoCardWithQuery id={detailId} />
+          : <BrowserRouter>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/pet/:id' element={<Home />} />
+            </Routes>
+          </BrowserRouter>
+
       }
     </React.Fragment >
   )
