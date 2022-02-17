@@ -20,18 +20,20 @@ export const App = () => {
   return (
     <React.Fragment>
       <GlobalStyle />
+      <BrowserRouter>
       <Logo />
       {
         (detailId)
           ? <PhotoCardWithQuery id={detailId} />
-          : <BrowserRouter>
+          : 
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/pet/:id' element={<Home />} />
             </Routes>
-          </BrowserRouter>
+          
 
       }
+      </BrowserRouter>
     </React.Fragment >
   )
 }
