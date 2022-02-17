@@ -8,7 +8,8 @@ import { Home } from './pages/Home'
 import { Detail } from './pages/Detail'
 import { NotFound } from './pages/NotFound'
 
-
+// component
+import { Navbar } from './components/Navbar'
 import { Logo } from './components/Logo'
 
 export const App = () => {
@@ -22,7 +23,9 @@ export const App = () => {
           <Route path='/pet/:id' element={<Home />} />
           <Route path='/detail/:detailId' element={<Detail />} />
           <Route path='/*' element={<NotFound />} />
+
         </Routes>
+        <Navbar />
       </BrowserRouter>
     </React.Fragment >
   )
