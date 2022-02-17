@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Article, ImgWrapper, Img } from './styles';
 
 // components
@@ -22,7 +23,6 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
 
   // const handleFavClick = () => setLiked(!liked)
 
-
   const toggleLike = ToggleLikeMutation()
   const handleFavButtonClick = () => {
     !liked && toggleLike(
@@ -40,35 +40,12 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
       {
         show &&
         <React.Fragment>
-          <a href={`/?detail=${id}`}>
+          <Link to={`/detail/${id}`}>
             <ImgWrapper>
               <Img src={src} />
             </ImgWrapper>
-          </a>
+          </Link>
           <FavButton liked={liked} likes={likes} onClick={handleFavButtonClick} />
-
-
-          {/* <ToggleLikeMutation>
-            { //anonymfunction 
-              (toggleLike) => {
-                const handleFavClick = () => {
-                  !liked && toggleLike({
-                    variables: {
-                      input: { id }
-                    }
-                  })
-                  setLiked(!liked)
-                }
-                return <FavButton liked={liked} likes={likes} onClick={handleFavClick} />
-              }
-            }
-          </ToggleLikeMutation> */}
-
-
-
-
-
-
         </React.Fragment>
       }
     </Article>
