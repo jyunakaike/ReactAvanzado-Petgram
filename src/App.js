@@ -7,6 +7,8 @@ import { GlobalStyle } from './styles/GlobalStyles'
 import { Home } from './pages/Home'
 import { Detail } from './pages/Detail'
 import { NotFound } from './pages/NotFound'
+import {Fav} from './pages/Fav'
+import {User} from './pages/User'
 
 // component
 import { Navbar } from './components/Navbar'
@@ -23,7 +25,8 @@ export const App = () => {
           <Route path='/pet/:id' element={<Home />} />
           <Route path='/detail/:detailId' element={<Detail />} />
           <Route path='/*' element={<NotFound />} />
-
+          <Route path='/favs' element={<Fav />} />
+          <Route path='/user' element={<User />} />
         </Routes>
         <Navbar />
       </BrowserRouter>
