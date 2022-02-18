@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { GlobalStyle } from './styles/GlobalStyles'
 
@@ -15,13 +15,14 @@ import { NotRegisteredUser } from './pages/NotRegisteredUser'
 import { Navbar } from './components/Navbar'
 import { Logo } from './components/Logo'
 
-
-// const UserLogged = ({ children }) => {
-//   return children({ isAuth: true })
-// }
+// context
+import { AppContext } from './context/AppContext'
 
 export const App = () => {
-  const [isLogged, setIsLogged] = useState(false)
+
+  const { isAuth } = useContext(AppContext)
+
+  console.log(isAuth)
   return (
     <React.Fragment>
       <GlobalStyle />
@@ -31,8 +32,8 @@ export const App = () => {
           <Route path='/' element={<Home />} />
           <Route path='/pet/:id' element={<Home />} />
           <Route path='/detail/:detailId' element={<Detail />} />
-          <Route path='/favs' element={(isLogged)?<Fav /> : <NotRegisteredUser />} />
-          <Route path='/user' element={(isLogged)?<User />: <NotRegisteredUser />} />
+          <Route path='/favs' element={(isAuth) ? <Fav /> : <NotRegisteredUser />} />
+          <Route path='/user' element={(isAuth) ? <User /> : <NotRegisteredUser />} />
 
           <Route path='/*' element={<NotFound />} />
         </Routes>
