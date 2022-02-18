@@ -1,16 +1,19 @@
 import React, { useRef } from 'react';
 import {Form ,Input, Button, Title} from './styles';
 
-export const UserForm = ({ aproveAuth, title }) => {
+export const UserForm = ({ onSubmit, title }) => {
   const form = useRef(null)
 
   const handleSubmit = () => {
     const formData = new FormData(form.current)
-    const formEntries = Object.fromEntries(formData)
-    console.log(formEntries)
-    aproveAuth();
+    const input= {
+      'email': formData.get('email') ,
+      'password' : formData.get('password')
+    }
+    console.log(input)
+    onSubmit(input)
   }
-  
+
   return (
     <React.Fragment>
       <Title>{title}</Title>
