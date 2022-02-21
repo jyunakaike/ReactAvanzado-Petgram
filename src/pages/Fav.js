@@ -1,7 +1,12 @@
 import React from 'react'
+import { RenderProp as FavsWithQuery } from '../container/GetFavorites'
 
 export const Fav = () => {
   return (
-    <div>Este es Fav</div>
+    <React.Fragment>
+      <div>Este es Fav</div>
+      <FavsWithQuery />
+    </React.Fragment>
+    
   )
 }
