@@ -8,7 +8,7 @@ const AppProvider = (props) => {
     return window.sessionStorage.getItem('token')
   });
   
-  const activateAuth = () => setIsAuth(true);
+  // const activateAuth = () => setIsAuth(true);
 
   const value = {
     isAuth,
