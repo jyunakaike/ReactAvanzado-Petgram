@@ -15,16 +15,16 @@ export const Input = styled.input`
   display: block;
 `
 
-export const Button = styled.button`
-  width: 100%;
-  height: 32px;
-  border-radius: 3px;
+// export const Button = styled.button`
+//   width: 100%;
+//   height: 32px;
+//   border-radius: 3px;
 
-  display: block;
-  text-align: center;
-  color: #fff;
-  background-color: #8d00ff;
-`
+//   display: block;
+//   text-align: center;
+//   color: #fff;
+//   background-color: #8d00ff;
+// `
 
 export const Title = styled.h2`
   font-size: 16px;

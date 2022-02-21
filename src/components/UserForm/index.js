@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
-import {Form ,Input, Button, Title, Error} from './styles';
+import {Form ,Input,  Title, Error} from './styles';
+import { SubmitButton } from '../SubmitButton';
 
 export const UserForm = ({ error , disabled, onSubmit, title }) => {
   const form = useRef(null)
@@ -21,9 +22,9 @@ export const UserForm = ({ error , disabled, onSubmit, title }) => {
         <Input type='text' name='email' placeholder='Email' disabled={disabled} />
         <Input type='password' name='password' placeholder='Password' disabled={disabled} />
       </Form>
-      <Button onClick={handleSubmit} disabled={disabled} >
-        Log In
-      </Button>
+      <SubmitButton onClick={handleSubmit} disabled={disabled} >
+        {title}
+      </SubmitButton>
 
       {error && <Error>{error}</Error> }
     </React.Fragment>
