@@ -22,7 +22,7 @@ export const App = () => {
 
   const { isAuth } = useContext(AppContext)
 
-  console.log(isAuth)
+  // console.log(isAuth)
   return (
     <React.Fragment>
       <GlobalStyle />
